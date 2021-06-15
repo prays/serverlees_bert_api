@@ -11,11 +11,13 @@ from sentence_transformers import SentenceTransformer, util
 app_desc = """<h2>Try this app by write work statement with endpoint `/predict`</h2>"""
 app = FastAPI(title="NTU Course Recommendation FastAPI", description=app_desc)
 
+MODEL_DIR = os.getenv("MODEL_DIR")
+
 # Define model
-model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
+model = SentenceTransformer(MODEL_DIR + '/model_bert')
 
 # Get target
-df = pd.read_csv('ntu_programmes_course_processed2.csv')
+df = pd.read_csv(MODEL_DIR + 'ntu_programmes_course_processed2.csv')
 df['all_text'] = df['intro'] + ' ' + df['objective'] + ' ' + df['outline']
 
 target = list(df['all_text'])
