@@ -1,0 +1,5 @@
+pydantic==1.8.1
+uvicorn==0.13.4
+pandas==1.1.5
+fastapi==0.65.2
+sentence_transformers==1.2.0
